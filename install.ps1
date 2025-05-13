@@ -9,6 +9,13 @@ If (Test-Path -Path "$($GDFolder)GeometryDash.exe") {
 	$GDFolder = Read-Host
 	if (Test-Path -Path "$($GDFolder)GeometryDash.exe") {
 		Write-Host "GD is in that folder!"
+  		If (Test-Path -Path "$($GDFolder)actualcurl.dll") {
+			Write-Host "M21ModLoader is already installed! Updating M21ModLoader instead!"
+   			Remove-Item -Path "$(GDFolder)libcurl.dll"
+      			Rename-Item -Path "$($GDFolder)actualcurl.dll" -NewName "libcurl.dll"
+		} else {
+			Write-Host "M21ModLoader is not installed!"
+  		}
 		Rename-Item -Path "$($GDFolder)libcurl.dll" -NewName "actualcurl.dll"
 		Invoke-WebRequest $LibcurlProxyDLL -OutFile "$($GDFolder)libcurl.dll"
   		If (Test-Path -Path "$($GDFolder)mods") {
