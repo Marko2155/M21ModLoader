@@ -19,3 +19,4 @@ If (Test-Path -Path "$($GDFolder)GeometryDash.exe") {
 		$GDFolder = Read-Host
 	}
 }
+Write-Host "M21ModLoader has been installed!"
