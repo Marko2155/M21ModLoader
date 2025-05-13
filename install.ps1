@@ -11,7 +11,12 @@ If (Test-Path -Path "$($GDFolder)GeometryDash.exe") {
 		Write-Host "GD is in that folder!"
 		Rename-Item -Path "$($GDFolder)libcurl.dll" -NewName "actualcurl.dll"
 		Invoke-WebRequest $LibcurlProxyDLL -OutFile "$($GDFolder)libcurl.dll"
-		New-Item -Path $GDFolder -Name "mods" -ItemType "Directory"
+  		If (Test-Path -Path "$(GDFolder)mods") {
+			Write-Host "M21ModLoader mods folder exists!"
+		}  else {
+  			Write-Host "M21ModLoader mods folder does not exist!"
+			New-Item -Path $GDFolder -Name "mods" -ItemType "Directory"
+   		}
 		Invoke-WebRequest $CrashLoggerDLL -OutFile "$($GDFolder)m21lcrashlog.dll"
 	} else {
 		Write-Host "GD is not in that folder!"
