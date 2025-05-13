@@ -11,7 +11,7 @@ If (Test-Path -Path "$($GDFolder)GeometryDash.exe") {
 		Write-Host "GD is in that folder!"
   		If (Test-Path -Path "$($GDFolder)actualcurl.dll") {
 			Write-Host "M21ModLoader is already installed! Updating M21ModLoader instead!"
-   			Remove-Item -Path "$(GDFolder)libcurl.dll"
+   			Remove-Item -Path "$($GDFolder)libcurl.dll"
       			Rename-Item -Path "$($GDFolder)actualcurl.dll" -NewName "libcurl.dll"
 		} else {
 			Write-Host "M21ModLoader is not installed!"
